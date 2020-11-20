@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: ontap98fo_storage_efficiencies.html
+keywords: FabricPool, Compression, FlexClone, Snapshot, compaction, deduplication,
+summary:
+---
+
+= Storage Efficiencies
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+//
+// This file was created with NDAC Version 2.0 (August 17, 2020)
+//
+// 2020-11-19 13:00:26.289053
+//
+
+Storage efficiencies include any features that reduce the amount of physical capacity taken up by data in a storage system. In ONTAP, these include the following:
+
+* Data compression
+* Data compaction
+* Data deduplication
+* NetApp FabricPool
+
+Sometimes, these definitions can be stretched to include:
+
+* NetApp FlexClone technology
+* NetApp Snapshot copies
+
+Storage efficiencies are vital for keeping storage costs low by reducing the amount of physical hardware that you need to purchase. ONTAP can perform data reduction on systems inline (AFF systems) or post-process (all systems), with minimal effects on the system’s performance.
+
+In ONTAP 9.8, there are a number of enhancements available for storage efficiencies.
+
+== FabricPool
+
+FabricPool is the NetApp data tiering technology that takes blocks marked as cold in a filesystem and bundles them into 4MB objects to be shipped off to cloud or S3 buckets. The idea is that cold data can use up to 80% of the total capacity in a storage system, so, rather than keep all of that on the performance tier, it’s better to move it to a lower cost storage solution.
+
+This all happens automatically in ONTAP via tiering policies that you can set, and you can find out how much cold data you have in your storage system today with Inactive Data Reporting. That way, you can evaluate whether FabricPool would actually save you money.
+
+image:ontap98fo_image22.png[Error: Missing Graphic Image]
+
+When a client accesses a file that has been tiered to the cloud, only the requested blocks (not the entire file) are brought back to the performance tier for access.
+
+For more information on FabricPool, see https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices] and https://soundcloud.com/techontap_podcast/episode-268-netapp-fabricpool-and-s3-in-ontap-98[TR-4598: FabricPool Best Practices and Tech ONTAP Podcast Episode 268: NetApp FabricPool and S3 in ONTAP 9.8^].
+
+ONTAP 9.8 supports the following FabricPool features:
+
+* *Tiering from HDD aggregates.* Prior to ONTAP 9.8, FabricPool tiering to cloud from ONTAP was only possible on SSD aggregates. ONTAP 9.8 now allows you to tier using FabricPool from HDD aggregates.
+* *Tiering to ONTAP S3.* Since ONTAP S3 is now generally available, it’s now possible to tier from an ONTAP system using FabricPool to an ONTAP S3 bucket. This provides a way to repurpose aging capacity storage by using it as a FabricPool tier. And, by tiering to the same cluster, you get faster retrieval times than traversing a cloud network connection.
+* *Increased Cooling Period.* Prior to ONTAP 9.8, data would be marked as cold after a cooling period, with a maximum of 63 days. ONTAP 9.8 allows you to configure that maximum to be as high as 183 days. This is useful for data that might be accessed sporadically, such as data that gets accessed on a quarterly basis, such as financial reports.
+* *Object tagging.* When you tier to an S3 provider that offers Information Lifecycle Policies that manage data based on object tags, ONTAP 9.8 can tag objects tiered using FabricPool to incorporate into those policies.
+* *Cloud retrieval.* In some cases, you might need to pull all tiered data back from the cloud. Rather than having to access all the data, you can now run a job that retrieves the data from the cloud in ONTAP 9.8.
+
+== Compression
+
+ONTAP 9.8 introduced some data compression changes that help improve performance, as well as improving data reduction ratios on compressible datasets.
+
+The main change for compression was to differentiate data into cold and hot classifications. Cold data is data that has not been accessed for a long time, and hot data is data that is frequently accessed. That means we want to less aggressively compress hot data and more aggressively compress cold data.
+
+In ONTAP 9.8, hot data is compressed inline using 8K compression groups. Additionally, data deduplication happens before compression to add even more efficiency to the datasets.
+
+Cold data is then compressed again in the background using a more aggressive 32K compression group. These changes mean better performance for hot data and better data reduction ratios for all data.
+
+link:ontap98fo_data_protection.html[Next: Data Protection]
