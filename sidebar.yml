@@ -1,0 +1,19 @@
+entries:
+  - title: NDAC contents
+    url: /index.html
+  - title: ONTAP 9.8 feature overview
+    entries:
+      - title: NetApp ONTAP
+        url: /ontap98fo_netapp_ontap.html
+      - title: Simplicity Enhancements
+        url: /ontap98fo_simplicity_enhancements.html
+      - title: Data Protocols
+        url: /ontap98fo_data_protocols.html
+      - title: Storage Efficiencies
+        url: /ontap98fo_storage_efficiencies.html
+      - title: Data Protection
+        url: /ontap98fo_data_protection.html
+      - title: VMware Virtualization
+        url: /ontap98fo_vmware_virtualization.html
+      - title: Technical Resources
+        url: /ontap98fo_technical_resources.html

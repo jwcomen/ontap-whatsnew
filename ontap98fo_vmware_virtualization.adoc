@@ -1,0 +1,38 @@
+---
+sidebar: sidebar
+permalink: ontap98fo_vmware_virtualization.html
+keywords:
+summary:
+---
+
+= VMware Virtualization
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+//
+// This file was created with NDAC Version 2.0 (August 17, 2020)
+//
+// 2020-11-19 13:00:26.410805
+//
+
+VMware integration and support in ONTAP 9.8 gets a boost with a number of new features including FlexGroup datastore support. ONTAP 9.8 allows you to provision a FlexGroup volume as a VMware NFS datastore, simplifying datastore management with a single, scalable datastore that provides the power of a full ONTAP cluster.  Many of these new features are coming with the ONTAP tools for VMware vSphere 9.8 release.
+
+This means the following applies:
+
+* Validated performance and placement
+* Interop qualification
+* Enhanced VAAI copy offload that is faster and completes in the background
+* Virtual Storage Console support, including FlexGroup provisioning,  resize and deletion, setting QoS on individual VMs, and displaying performance metrics (latency, IOPS,  and throughput) for VMs
+* NetApp SnapCenter primary storage backup and recovery support
+* Support for a maximum of 64TB VMFS LUNs.  With support for 128TB LUNs/300TB FlexVol volumes with the NetApp All-SAN Array, you can provision the maximum 64TB VMFS datastore using the Virtual Storage Console in the ONTAP tools for VMware vSphere 9.8 release.
+* Increased https://www.vmware.com/in/products/site-recovery-manager.html[Site Recovery Manager (SRM)^] scale.  The Storage Replication Adapter in the ONTAP tools for VMware vSphere 9.8 release increases the scale of datastores and protection groups supported up to 512.
+* VMware vSphere vVols file metrics with REST APIs. REST API support for vVols file metrics is added to ONTAP 9.8, which allows the Virtual Storage Console to display ONTAP storage performance metrics for vVols in the dashboard and reports.
+* https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.admin.doc/GUID-5651B2B8-6410-48AE-8882-6D51C85AC201.html[Storage Replication Adapter (SRA)^] support for SnapMirror Synchronous
+* Support for https://tanzu.vmware.com/tanzu[VMware Tanzu^] storage
+* Improved support for vVols, including an enhanced SAN vVol rebalancing command and enhancements to Storage Capability Profiles. For more information on the latest VMware virtualization support, see the following resources:
+
+* https://soundcloud.com/techontap_podcast/episode-263-virtualization-in-ontap-fall-2020-update[Tech ONTAP Podcast Episode 263: Virtualization in ONTAP – Fall 2020^]
+* https://www.netapp.com/us/media/tr-4597.pdf[TR-4597: VMware vSphere with ONTAP^]
