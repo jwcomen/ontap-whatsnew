@@ -131,7 +131,7 @@ NVMe is a new SAN protocol that helps improve latency and performance with block
 
 This blog covers it nicely: https://blog.netapp.com/nvme-over-fabric/[When You’re Implementing NVMe Over Fabrics, the Fabric Really Matters^].
 
-NetApp introduced support for NVMe over Fibre Channel in ONTAP 9.4 and has been adding feature enhancements in each release. ONTAP 9.8 adds the followiung:
+NetApp introduced support for NVMe over Fibre Channel in ONTAP 9.4 and has been adding feature enhancements in each release. ONTAP 9.8 adds the following:
 
 * *NVMe/FC on the same SVM with FCP and iSCSI.* Now, you can use NVMe/FC on the same SVMs as your other SAN protocols, which simplifies management of your SAN environments.
 * *Gen 7 SAN switch fabric support.* This feature adds support for the newer Gen-7 SAN switches.
