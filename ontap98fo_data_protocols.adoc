@@ -49,7 +49,7 @@ ONTAP 9.8 offers the following SMB/CIFS enhancements:
 
 NetApp FlexCache volumes are sparse, virtual caches comprised of NetApp FlexGroup volumes. These caches point back to an origin volume and populate data into the cache as it is requested from clients to provide fast, localized access anywhere you run ONTAP―whether in the cloud, at the edge, or in the datacenter―to provide a truly global namespace.
 
-image:ontap98fo_image19.png
+image:ontap98fo_image19.png["Error: Missing Graphic Image"]
 
 For more information about FlexCache volumes, see https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf[TR-4743: FlexCache in ONTAP^].
 
@@ -65,7 +65,7 @@ ONTAP 9.8 offers the following FlexCache volume enhancements:
 
 FlexGroup volumes are the NetApp ONTAP scale-out NAS solution, providing up to 20PB and 400 billion files in a single namespace, while offering automatically load-balanced parallel processing of high ingest workloads for a blend of capacity, performance, and simplicity.
 
-image:ontap98fo_image20.png
+image:ontap98fo_image20.png["Error: Missing Graphic Image"]
 
 For more information about FlexGroup volumes, see https://www.netapp.com/us/media/tr-4571.pdf[TR-4571: NetApp FlexGroup Volumes Best Practices^].
 
@@ -123,7 +123,7 @@ ASA adds an enhancement called Persistent Ports to improve failover times. Persi
 
 The following figure provides a failover example for persistent ports.
 
-image:ontap98fo_image21.png
+image:ontap98fo_image21.png["Error: Missing Graphic Image"]
 
 === NVMe/FC
 
