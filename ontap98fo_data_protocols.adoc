@@ -20,15 +20,15 @@ summary:
 
 Data protocols refer to the methods in which clients and end users interact with the NetApp ONTAP storage system for data access. NetApp ONTAP provides multiple officially supported interfaces for data access in the same storage platform, including the following:
 
-* SAN
 * NAS
+* SAN
 * S3
 
 ONTAP 9.8 delivers a slew of enhancements to ONTAP data protocols.
 
 == NAS Protocol Enhancements
 
-Network Attached Storage (NAS) protocols refer to file-based transfer methods such as NFS and SMB/CIFS. The following section covers what enhancements were added to ONTAP 9.8 for NAS protocol support, as well as features that apply specifically to NAS, such as NetApp FlexGroup and FlexCache volumes.
+Network Attached Storage (NAS) protocols refer to file-based transfer methods such as NFS and SMB/CIFS. The following enhancements were added to ONTAP 9.8 for NAS protocol support, as well as features that apply specifically to NAS, such as NetApp FlexGroup and FlexCache volumes.
 
 === NFS Enhancements
 
@@ -41,15 +41,15 @@ ONTAP 9.8 offers the following NFS enhancements:
 
 ONTAP 9.8 offers the following SMB/CIFS enhancements:
 
-* *SMB3- encrypted DC connections.* Encryption over the wire for SMB DC connections.
+* *SMB3-encrypted DC connections.* Encryption over the wire for SMB DC connections.
 * *Map SID to UID on Set Owner (-map- sid-to- uid-on-set-owner).* This option controls whether ONTAP maps the Windows SID to a UNIX UID when setting ownership on files and folders. The option was added to improve the data migration experience for customers that experienced increased load on their Active Directory Servers. The default is `true`. (Fix for bug https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1153207[1153207^].)
-* *Set Modebits when NFSv4_acl are inherited (-is-inherit-modebits-with-nfsv4acl-enabled)*. Provides support for multiprotocol NAS interaction when SMB files are created in directories where NFSv4 ACLs have removed the default `OWNER@`, `GROUP@`,  and `EVERYONE@` ACLs, or those ACLs don’t have inherit flags set.  Default is `false`. (Fix for https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/820848[bug 820848^].)
+* *Set Modebits when NFSv4_acl are inherited (-is-inherit-modebits-with-nfsv4acl-enabled)*. Provides support for multiprotocol NAS interaction when SMB files are created in directories where NFSv4 ACLs have removed the default `OWNER@`, `GROUP@`,  and `EVERYONE@` ACLs, or those ACLs don’t have inherit flags set. Default is `false`. (Fix for https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/820848[bug 820848^].)
 
-==== FlexCache Volume Enhancements
+=== FlexCache Volume Enhancements
 
-NetApp FlexCache volumes are sparse, virtual caches comprised of NetApp FlexGroup volumes. These caches point back to an origin volume and populates data into the cache as it is requested from clients to provide fast, localized access anywhere you run ONTAP―whether in the cloud, at the edge, or in the datacenter―to provide a truly global namespace.
+NetApp FlexCache volumes are sparse, virtual caches comprised of NetApp FlexGroup volumes. These caches point back to an origin volume and populate data into the cache as it is requested from clients to provide fast, localized access anywhere you run ONTAP―whether in the cloud, at the edge, or in the datacenter―to provide a truly global namespace.
 
-image:ontap98fo_image19.png[Error: Missing Graphic Image]
+image:ontap98fo_image19.png
 
 For more information about FlexCache volumes, see https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf[TR-4743: FlexCache in ONTAP^].
 
@@ -61,11 +61,11 @@ ONTAP 9.8 offers the following FlexCache volume enhancements:
 * *Block-level cache invalidation.* Rather than invalidating entire files when evicting changed data from the cache, now only the blocks that have changed are evicted. This saves capacity and WAN traffic load.
 * *Pre-populating caches.* If you have a directory in a volume that you know will be accessed frequently, you can now pre-populate the cache with the contents of that directory to eliminate the latency from initial client access.
 
-==== FlexGroup Volume Enhancements
+=== FlexGroup Volume Enhancements
 
-FlexGroup volumes are the NetApp ONTAP scale-out NAS solution, providing up to 20PB and 400 billion files in a single namespace, while offering automatically load- balanced parallel processing of high ingest workloads for a blend of capacity, performance, and simplicity.
+FlexGroup volumes are the NetApp ONTAP scale-out NAS solution, providing up to 20PB and 400 billion files in a single namespace, while offering automatically load-balanced parallel processing of high ingest workloads for a blend of capacity, performance, and simplicity.
 
-image:ontap98fo_image20.png[Error: Missing Graphic Image]
+image:ontap98fo_image20.png
 
 For more information about FlexGroup volumes, see https://www.netapp.com/us/media/tr-4571.pdf[TR-4571: NetApp FlexGroup Volumes Best Practices^].
 
@@ -90,19 +90,19 @@ For more information on FlexGroup volumes and NDMP, see https://www.netapp.com/u
 ** Virtual Storage Console support
 ** NetApp SnapCenter backup support
 
-==== Async Delete
+=== Async Delete
 
 Async delete enables storage administrators to bypass the latency of the network by deleting directories from the CLI.
 
-If you have ever tried to delete a directory with many files in it over NFS or SMB, you know how painful that can be. Each operation must travel over the network via the NAS protocol that you are using, and then ONTAP must process those requests and respond. Depending on the network bandwidth available, client specs, or storage system, that process can take a long time.  Async delete saves significant time and allows clients to get back to work quicker.
+If you have ever tried to delete a directory with many files in it over NFS or SMB, you know how painful that can be. Each operation must travel over the network via the NAS protocol that you are using, and then ONTAP must process those requests and respond. Depending on the network bandwidth available, client specs, or storage system, that process can take a long time. Async delete saves significant time and allows clients to get back to work quicker.
 
 For more information on async delete, see https://www.netapp.com/us/media/tr-4571.pdf[TR-4751: NetApp FlexGroup Volumes Best Practices^].
 
-=== SAN Enhancements
+== SAN Enhancements
 
-Storage Area Network (SAN) protocols refer to block-based data transfer methods such as FCP, iSCSI, and NVMe over Fibre Channel. The following section covers what enhancements were added to ONTAP 9.8 for SAN protocol support.
+Storage Area Network (SAN) protocols refer to block-based data transfer methods such as FCP, iSCSI, and NVMe over Fibre Channel. The following enhancements were added to ONTAP 9.8 for SAN protocol support.
 
-==== All-SAN Array (ASA)
+=== All-SAN Array (ASA)
 
 ONTAP 9.7 introduced a new dedicated SAN platform called https://www.netapp.com/data-storage/san-storage-area-network/documentation/[ASA^], with the goal of simplifying Tier-1 SAN deployments while drastically reducing the failover times in SAN environments by offering an active/active approach to SAN connectivity.
 
@@ -112,31 +112,31 @@ ONTAP 9.8 brings some enhancements to the ASA, including the following:
 
 * *Larger LUN and FlexVol volume sizes.* LUNs on the ASA can now be provisioned at 128TB; FlexVol volumes can be 300TB.
 * *MetroCluster over IP support.* ASA can now be used for site failovers over IP networks.
-* *SnapMirror Business Continuity support.* ASA can be used with SnapMirror Business Continuity.  xref
-* *Host ecosystem expansion.* HP-UX, Solaris,  and AIX support. See the https://mysupport.netapp.com/matrix/[Interoperability Matrix^] for details.
+* *SnapMirror Business Continuity (SM-BC) support.* ASA can be used with SnapMirror Business Continuity.  xref
+* *Host ecosystem expansion.* HP-UX, Solaris, and AIX support. See the https://mysupport.netapp.com/matrix/[Interoperability Matrix^] for details.
 * *Support for the A800 and A250 platforms.*
 * *Simplified Provisioning in System Manager.*
 
-==== Persistent Ports
+=== Persistent Ports
 
 ASA adds an enhancement called Persistent Ports to improve failover times. Persistent ports in ONTAP offer much more resiliency and continuous data access for SAN hosts connecting to an ASA. Each node on the ASA maintains shadow fiber channel LIFs. This functionality is key to how ONTAP 9.8 reduces SAN failover time even more for the ASA. These LIFs maintain the same IDs of the partner LIFs, but they remain in standby mode. If there is a failover and an FC LIF must migrate to the partner node, then, rather than changing the IDs (which can increase failover times while the host negotiates that change), the shadow LIF becomes the new path. The host continues I/O on the same path, on the same ID, without a link-down notification and without any additional configuration required.
 
 The following figure provides a failover example for persistent ports.
 
-image:ontap98fo_image21.png[Error: Missing Graphic Image]
+image:ontap98fo_image21.png
 
-==== NVMe/FC
+=== NVMe/FC
 
 NVMe is a new SAN protocol that helps improve latency and performance with block workloads over traditional FCP and iSCSI.
 
 This blog covers it nicely: https://blog.netapp.com/nvme-over-fabric/[When You’re Implementing NVMe Over Fabrics, the Fabric Really Matters^].
 
-NetApp introduced support for NVMe over Fibre Channel in ONTAP 9.4 and has been adding feature enhancements in each release. ONTAP 9.8 continues that with some more additions to the protocol support.
+NetApp introduced support for NVMe over Fibre Channel in ONTAP 9.4 and has been adding feature enhancements in each release. ONTAP 9.8 adds the following:
 
 * *NVMe/FC on the same SVM with FCP and iSCSI.* Now, you can use NVMe/FC on the same SVMs as your other SAN protocols, which simplifies management of your SAN environments.
 * *Gen 7 SAN switch fabric support.* This feature adds support for the newer Gen-7 SAN switches.
 
-=== S3 Enhancements
+== S3 Enhancements
 
 Object storage with the S3 protocol is the newest addition to the ONTAP protocol family. Added as a public preview in ONTAP 9.7, S3 is now a fully supported protocol in ONTAP 9.8.
 
