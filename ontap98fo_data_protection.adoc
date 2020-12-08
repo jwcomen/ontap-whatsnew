@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: ontap98fo_data_protection.html
 keywords: TR-4872, Data Protection, Security, Secure Purge, IPSec, NetApp Volume Encryption, NVE, SnapMirror Cloud, SnapMirror Business Continuity (SM-BC)
-summary:
+summary: This section covers the latest data protection enhancements for ONTAP 9.8, including both the notion of off-site replication of data, as well as securing that data in-flight and at-rest.
 ---
 
 = Data Protection
@@ -41,7 +41,7 @@ Secure Purge in ONTAP 9.8 removes those limitations by:
 
 IPSec is a standard mechanism for performing application-agnostic encryption over the wire. With IPSec, you can encrypt network traffic regardless of the protocol in use. That provides opportunities for simplification, particularly with NFS, where Kerberos encryption is difficult to set up and use, as well as providing the only way to encrypt iSCSI traffic over the wire.
 
-ONTAP 9.8 now adds support for IPSec. The ONTAP implementation of IPSec leverages a pre- shared secret or key (PSK) with the connecting client. Those clients include any recent OS that leverages IKEv2 with PSK. Note that the Windows OS does not support IKEv2 with PSK.
+ONTAP 9.8 now adds support for IPSec. The ONTAP implementation of IPSec leverages a pre-shared secret or key (PSK) with the connecting client. Those clients include any recent OS that leverages IKEv2 with PSK. Note that the Windows OS does not support IKEv2 with PSK.
 
 === Trusted Platform Module
 

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: ontap98fo_data_protocols.html
 keywords: NAS Protocol, NFS, SMB/CIFS, FlexCache Volume, FlexGroup, Async Delete, SAN, Persistent Ports, NVMe/FC, S3
-summary:
+summary: This section covers data protocols that allow clients and end users interact with the ONTAP storage system for data access.  
 ---
 
 = Data Protocols
