@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: ontap98fo_vmware_virtualization.html
-keywords:
-summary:
+keywords: FlexGroup, VMware, vSphere, NFS, 9.8, Virtual Storage Console, SnapCenter, Storage Replication Adapter, vVols
+summary: This section describes new integrations and support in ONTAP 9.8 for VMware virtualization, including provisioning a FlexGroup volume as a VMware NFS datastore, simplifying datastore management with a single, scalable datastore that provides the power of a full ONTAP cluster.
 ---
 
 = VMware Virtualization
