@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: ontap98fo_data_protection.html
 keywords: TR-4872, Data Protection, Security, Secure Purge, IPSec, NetApp Volume Encryption, NVE, SnapMirror Cloud, SnapMirror Business Continuity (SM-BC)
-summary: This section covers the latest data protection enhancements for ONTAP 9.8, including both the notion of off-site replication of data, as well as securing that data in-flight and at-rest.
+summary: This page covers the latest data protection enhancements for ONTAP 9.8, including both the notion of off-site replication of data, as well as securing that data in-flight and at-rest.
 ---
 
 = Data Protection
