@@ -36,6 +36,6 @@ This is not a comprehensive list; if we included every feature offered by ONTAP,
 
 For more detailed information about NetApp ONTAP, see the https://www.netapp.com/pdf.html?item=/media/7413-ds-3231.pdf[ONTAP 9 data management software data sheet^] and the https://docs.netapp.com/ontap-9/index.jsp[product documentation^].
 
-Also, this link:https://tv.netapp.com/detail/video/6211778986001[video] from NetApp Insight 2020 presents advancements in the latest release of NetApp ONTAP.
+Check out this link:https://tv.netapp.com/detail/video/6211778986001[video] from NetApp Insight 2020 for a broader tour of noteworthy advances in NetApp ONTAP.
 
 link:ontap98fo_simplicity_enhancements.html[Next: Simplicity Enhancements]
