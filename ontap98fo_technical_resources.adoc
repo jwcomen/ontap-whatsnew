@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: ontap98fo_technical_resources.html
 keywords:
-summary:
+summary: This page contains links to various technical resources relevant to ONTAP 9.8.
 ---
 
 = Technical Resources

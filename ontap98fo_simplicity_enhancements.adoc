@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: ontap98fo_simplicity_enhancements.html
 keywords: System Manager, Health, Alerts, Capacity Views, Network Visualization, Performance Views, File System Analytics, FSA, Active NFS Clients, upgrade
-summary:
+summary: This page covers ONTAP 9.8 enhancements that improve simplicity, including ONTAP System Manager updates, ONTAP upgrade and tech refresh improvements, and REST API enhancements.
 ---
 
 = Simplicity Enhancements

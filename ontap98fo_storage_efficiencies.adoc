@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: ontap98fo_storage_efficiencies.html
 keywords: FabricPool, Compression, FlexClone, Snapshot, compaction, deduplication,
-summary:
+summary: This page covers ONTAP 9.8 storage efficiencies, especially compression and those associated with NetApp FabricPool technology.
 ---
 
 = Storage Efficiencies
