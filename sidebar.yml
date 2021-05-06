@@ -15,3 +15,7 @@ entries:
         url: /ontap98fo_vmware_virtualization.html
       - title: Technical Resources
         url: /ontap98fo_technical_resources.html
+  - title: NetApp ONTAP 9.9.1 Feature Overview
+    url: /ontap991fo_netapp_ontap.html
+    type: solution
+    entries:

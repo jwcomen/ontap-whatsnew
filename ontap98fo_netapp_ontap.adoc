@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: ontap98fo_netapp_ontap.html
-keywords: TR-4872, 4872, introduction, NAS, SAN, NFS, SMB, S3, HA,
+keywords: TR-4872, 4872, introduction, NAS, SAN, NFS, SMB, S3, HA
 summary: This page presents an overview of the latest features in ONTAP 9.8 and links to more information.
 ---
 
