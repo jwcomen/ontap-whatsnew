@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: ontap991fo_other_major_additions.html
+keywords: FlexGroup, S3, NFSv4.2, MAC,
+summary: In addition to the System Manager enhancements, SAN enhancements, and data protection enhancements, there are a few other big additions to ONTAP 9.9.1.
+---
+
+= Other major additions
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+//
+// This file was created with NDAC Version 2.0 (August 17, 2020)
+//
+// 2021-05-06 15:42:30.891913
+//
+
+
+In addition to the System Manager enhancements, SAN enhancements, and data protection enhancements, there are a few other big additions to ONTAP 9.9.1.
+
+== Logical space accounting/enforcement – FlexGroup volumes
+
+Logical space accounting was introduced for FlexVol volumes in ONTAP 9.4. It enables storage administrators to mask storage efficiency savings so that end users avoid overallocating their designated storage quotas.
+
+For example, if a user writes 6TB to a 10TB volume and storage efficiencies save 2TB, logical space accounting can control whether the user sees 6TB or 4TB.
+
+image:ontap991fo_image17.png[Error: Missing Graphic Image]
+
+ONTAP 9.5 enhanced this feature and added quota enforcement support for FlexVols to give more control to storage administrators by preventing new writes according to the logical space thresholds set. However, FlexGroup volumes were missing this functionality until ONTAP 9.9.1.
+
+== ONTAP S3 user-defined metadata tags
+
+ONTAP 9.8 introduced support for the S3 protocol for basic object storage functionality.
+
+Support for S3 in ONTAP 9.8 included the following:
+
+* Basic PUT/GET object access (does not include access to both S3 and NAS from the same bucket)
+** No object tagging or ILM support; for feature-rich, globally dispersed S3, use https://www.netapp.com/data-storage/storagegrid/[NetApp StorageGRID^].
+* TLS 1.2 encryption
+* Multi-part uploads
+* Adjustable ports
+* Multiple buckets per volume
+* Bucket access policies
+* S3 as a NetApp FabricPool target
+
+ONTAP 9.9.1 and later offers support for metadata tagging of objects when using ObjectCreate and MultiPartUpload calls. When HEAD or GET is performed on an object, the user-defined metadata and count of the number of tags is returned as part of the HTTP header in the response. These tags allow you to better categorize your objects within ONTAP buckets for more robust data management and are compatible with applications that require the ability to create metadata and tags.
+
+For more information, see the following resources:
+
+* https://soundcloud.com/techontap_podcast/episode-268-netapp-fabricpool-and-s3-in-ontap-98[Tech ONTAP Podcast: Episode 268 - NetApp FabricPool and S3 in ONTAP 9.8^]
+* https://www.netapp.com/us/media/tr-4814.pdf[ONTAP S3^]
+
+== NFSv4.2 security labels
+
+ONTAP 9.9.1 introduces support for the NFSv4.2 feature called Labeled NFS, which is a way to manage granular file and folder access by using SELinux labels and Mandatory Access Control (MAC). These MAC labels are stored with files and folders and works in conjunction with UNIX permissions and NFSv4.x ACLs. Support for labeled NFS means that ONTAP now recognizes and understands the NFS client’s SELinux label settings. Labeled NFS is covered in https://tools.ietf.org/html/rfc7204[RFC-7204^]. 
+
+Use cases include the following:
+
+* MAC labeling of virtual machine images
+* Data security classification for the public sector (secret, top secret, and so on)
+* Security compliance
+* Diskless Linux
+
+In this release, ONTAP supports the following enforcement modes:
+
+* https://tools.ietf.org/html/rfc7204[Limited Server Mode^]. ONTAP cannot enforce the labels, but it can store and transmit them.
+** The ability to change MAC labels is also up to the client to enforce.
+* https://tools.ietf.org/html/rfc7204[Guest Mode^]. If the client is not labeled NFS-aware (v4.1 or lower), MAC labels are not transmitted.
+
+ONTAP does not currently support https://tools.ietf.org/html/rfc7204[Full Mode^] (storing and enforcing MAC labels).
