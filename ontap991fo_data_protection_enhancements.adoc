@@ -120,3 +120,5 @@ ONTAP 9.9.1 brings the following improvements to NetApp SnapLock:
 
 * https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-concepts%2FGUID-8A8108CF-499A-46FC-917F-A40FAD68C8D6.html[Storage efficiency^] support on WORM volumes. Support for data compaction, cross-volume/aggregate-level deduplication (AFF only), continuous segment cleaning,  and Temperature Sensitive Storage Efficiency.
 * Ransomware protection for SnapLock volumes containing snapshot copies of LUNs.For more information on SnapLock, see https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf[Compliant WORM Storage Using NetApp SnapLock^].
+
+For more information on SnapLock, see https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf[Compliant WORM Storage Using NetApp SnapLock^].
