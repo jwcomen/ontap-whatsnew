@@ -1,4 +1,18 @@
 entries:
+  - title: NetApp ONTAP 9.9.1 Feature Overview
+    url: /ontap991fo_netapp_ontap.html
+    type: solution
+    entries:
+      - title: System Manager enhancements
+        url: /ontap991fo_system_manager_enhancements.html
+      - title: SAN enhancements
+        url: /ontap991fo_san_enhancements.html
+      - title: Data protection enhancements
+        url: /ontap991fo_data_protection_enhancements.html
+      - title: Other major additions
+        url: /ontap991fo_other_major_additions.html
+      - title: Technical Resources
+        url: /ontap991fo_technical_resources.html
   - title: NetApp ONTAP 9.8 Feature Overview
     url: /ontap98fo_netapp_ontap.html
     type: solutions
@@ -15,7 +29,3 @@ entries:
         url: /ontap98fo_vmware_virtualization.html
       - title: Technical Resources
         url: /ontap98fo_technical_resources.html
-  - title: NetApp ONTAP 9.9.1 Feature Overview
-    url: /ontap991fo_netapp_ontap.html
-    type: solution
-    entries:
