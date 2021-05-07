@@ -117,8 +117,8 @@ From here, you see the Enable Analytics link on the right side of the page.
 image:ontap991fo_image9.png[Error: Missing Graphic Image]
 
 After you click enable, the scanner starts. The time of completion depends on the number of objects in the volume as well as the system load. After it is finished, you see the entire directory structure populated in the System Manager view. This view can be navigated down the directory tree, and it provides access for history information, directory size information, and file sizes.
-ONTAP 9.9.1 brings some additional enhancements to the feature, such as filtering by file or directory name, downloading .xls reports and performing https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-AA63F7C1-37EA-4577-9A6A-8AC62A96B1ED.htmlfast[directory deletes^].
 
+ONTAP 9.9.1 brings some additional enhancements to the feature, such as filtering by file or directory name and performing https://docs.netapp.com/us-en/ontap/task_nas_file_system_analytics_take_corrective_action.html[fast directory deletes^].
 
 == Other System Manager 9.9.1 enhancements
 

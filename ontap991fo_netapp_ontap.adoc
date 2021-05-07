@@ -5,7 +5,8 @@ keywords: Introduction, NAS, SAN, S3, Snapshot, SnapMirror, SnapVault, HA
 summary: NetApp ONTAP is the industry-leading flagship data-management software that enables you to seamlessly manage and protect your data wherever it lives, whether on-premises, at the edge, or in the cloud.
 ---
 
-= NetApp ONTAP
+= NetApp ONTAP 9.9.1 Feature Overview
+
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -17,6 +18,8 @@ summary: NetApp ONTAP is the industry-leading flagship data-management software 
 //
 // 2021-05-06 15:42:30.801722
 //
+
+Justin Parisi, NetApp
 
 NetApp ONTAP is the industry-leading flagship data-management software that enables you to seamlessly manage and protect your data wherever it lives, whether on-premises, at the edge, or in the cloud.
 
@@ -31,6 +34,6 @@ NetApp ONTAP offers support for the following features, all on the same platform
 * Support for all-flash, spinning drive, and hybrid disk configurations
 * Security features (multifactor authentication, NetApp Volume Encryption, and Secure Purge)
 
-This is not a comprehensive list; if we included every feature offered by ONTAP, this document would be hundreds of pages long.
+This is not a comprehensive list; if we included every feature offered by ONTAP, this document would be hundreds of pages long!
 
 For more detailed information about NetApp ONTAP, see the https://www.netapp.com/pdf.html?item=/media/7413-ds-3231.pdf[ONTAP 9 data management software data sheet^] and the product documentation.
