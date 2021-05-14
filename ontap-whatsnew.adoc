@@ -1,0 +1,13 @@
+---
+sidebar: sidebar
+permalink: ontap-whatsnew.html
+keywords:
+summary:
+---
+
+= What's new in NetApp ONTAP!
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
