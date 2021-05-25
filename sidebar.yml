@@ -1,6 +1,6 @@
 entries:
   - title: NetApp ONTAP 9.9.1 Feature Overview
-    url: /ontap991fo_netapp_ontap.html
+    url: /index.html
     type: solution
     entries:
       - title: System Manager enhancements
@@ -15,7 +15,7 @@ entries:
         url: /ontap991fo_technical_resources.html
   - title: NetApp ONTAP 9.8 Feature Overview
     url: /ontap98fo_netapp_ontap.html
-    type: solutions
+    type: solution
     entries:
       - title: Simplicity Enhancements
         url: /ontap98fo_simplicity_enhancements.html
