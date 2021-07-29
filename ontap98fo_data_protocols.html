@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Data Protocols</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Data Protocols" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/ontap-whatsnew/ontap98fo_data_protocols.html" />
+	<meta property="og:description" content="This page covers data protocols that allow clients and end users interact with the ONTAP storage system for data access." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/ontap-whatsnew/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="This page covers data protocols that allow clients and end users interact with the ONTAP storage system for data access.">
+  <meta name="keywords" content=" NAS Protocol, NFS, SMB/CIFS, FlexCache Volume, FlexGroup, Async Delete, SAN, Persistent Ports, NVMe/FC, S3">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/us-en/ontap-whatsnew/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/ontap-whatsnew/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/ontap-whatsnew/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/ontap-whatsnew/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/ontap-whatsnew/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/ontap-whatsnew/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/ontap-whatsnew/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/ontap-whatsnew/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/ontap-whatsnew/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/ontap-whatsnew/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/ontap-whatsnew/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/ontap-whatsnew/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/ontap-whatsnew/css/na-pagenav.css' type='text/css'>
+
+  
+
+  
+  <link rel='stylesheet' href='/us-en/ontap-whatsnew/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/us-en/ontap-whatsnew/js/na-search.js'></script>
+  
+
+  
+  <script src='/us-en/ontap-whatsnew/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/us-en/ontap-whatsnew/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/ontap-whatsnew/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/ontap-whatsnew/js/na-utility.js'></script>
+  <script src='/us-en/ontap-whatsnew/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/us-en/ontap-whatsnew/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/ontap-whatsnew/js/toc.js'></script>
+  <script src='/us-en/ontap-whatsnew/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" data-type="widget" data-placeholder="Search Documentation" data-no-results-found="No results were found for {query}" data-did-you-mean="Search for {suggestion}." data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" data-results-found="{hitCount} results found"  ></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">English</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/ontap-whatsnew/ontap98fo_data_protocols.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/ontap-whatsnew/ontap98fo_data_protocols.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/ontap-whatsnew/ontap98fo_data_protocols.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: English
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+        <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">Home</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">Documentation</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/ontap-whatsnew/">ONTAP&nbsp;What's&nbsp;New</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Data Protocols
+        </li>
+      </ul>
+    </div>
+
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">PDFs<span>
+    </span>
+  </a>
+</div>
+<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
+      <span class="n-pdf-section-title">Site</span>
+    </div>
+    <li>
+      <a target="_blank" href="/us-en/ontap-whatsnew/pdfs/fullsite-sidebar/TR_4894__NetApp_ONTAP_9_9_1_Feature_Overview.pdf" >
+        <img src="/us-en/ontap-whatsnew/images/pdf.png" width="20" height="20"/>
+        TR-4894: NetApp ONTAP 9.9.1 Feature Overview
+      </a>
+    </li>
+
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+  
+
+
+
+    
+      
+
+
+    <div class="n-pdf-section">
+  <span class="n-pdf-section-title">This page</span>
+</div>
+
+<li class="active">
+  <a target="_blank" href="/us-en/ontap-whatsnew/pdfs/pages/ontap98fo_data_protocols.pdf" >
+    <img src="/us-en/ontap-whatsnew/images/pdf.png" width="20" height="20"/>
+    Data Protocols
+  </a>
+</li>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+  
+
+
+</ul>
+
+<script>
+  $("#toggleContainerPdf li.active").parents('li').toggle('display');
+  $("#toggleContainerPdf li.active").parents('span.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+  });
+</script><ul id="mysidebar" class="nav"><li class="subfolders "><a href="index.html">
+        <div class="na-navbar-padding"> NetApp ONTAP 9.9.1 Feature Overview</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="ontap991fo_system_manager_enhancements.html">
+        System Manager enhancements
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap991fo_san_enhancements.html">
+        SAN enhancements
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap991fo_data_protection_enhancements.html">
+        Data protection enhancements
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap991fo_other_major_additions.html">
+        Other major additions
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap991fo_technical_resources.html">
+        Technical Resources
+      </a></li></ul></li><li class="subfolders "><a href="ontap98fo_netapp_ontap.html">
+        <div class="na-navbar-padding"> NetApp ONTAP 9.8 Feature Overview</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="ontap98fo_simplicity_enhancements.html">
+        Simplicity Enhancements
+      </a></li><li class="  active "><a class="na-navbar-padding" href="ontap98fo_data_protocols.html">
+        Data Protocols
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap98fo_storage_efficiencies.html">
+        Storage Efficiencies
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap98fo_data_protection.html">
+        Data Protection
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap98fo_vmware_virtualization.html">
+        VMware Virtualization
+      </a></li><li class=" "><a class="na-navbar-padding" href="ontap98fo_technical_resources.html">
+        Technical Resources
+      </a></li></ul></li></ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Data Protocols</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2020-12-08 22:03:02 +0000">12/08/2020</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" href="https://github.com/netapp-dorianh">
+    <img  class="avatar avatar-small"
+          alt="netapp-dorianh"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/59885112?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/adamn-ntap">
+    <img  class="avatar avatar-small"
+          alt="adamn-ntap"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/36739591?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/akseldavis">
+    <img  class="avatar avatar-small"
+          alt="akseldavis"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/33839009?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+  <span>
+    <a target="_blank" href="/us-en/ontap-whatsnew/pdfs/pages/ontap98fo_data_protocols.pdf" role="button">
+      <img src="/us-en/ontap-whatsnew/images/pdf.png" width="20" height="20"/>Download PDF of this page</a>
+  </span>
+
+
+</p>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Data protocols refer to the methods in which clients and end users interact with the NetApp ONTAP storage system for data access. NetApp ONTAP provides multiple officially supported interfaces for data access in the same storage platform, including the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NAS</p>
+</li>
+<li>
+<p>SAN</p>
+</li>
+<li>
+<p>S3</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ONTAP 9.8 delivers a slew of enhancements to ONTAP data protocols.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nas-protocol-enhancements">NAS Protocol Enhancements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Network Attached Storage (NAS) protocols refer to file-based transfer methods such as NFS and SMB/CIFS. The following enhancements were added to ONTAP 9.8 for NAS protocol support, as well as features that apply specifically to NAS, such as NetApp FlexGroup and FlexCache volumes.</p>
+</div>
+<div class="sect2">
+<h3 id="nfs-enhancements">NFS Enhancements</h3>
+<div class="paragraph">
+<p>ONTAP 9.8 offers the following NFS enhancements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NFSv4.2.</strong> Offers basic NFSv4.2 protocol support and does not include NFSv4.2 features such as labeling. NFSv4.2 is enabled when NFSv4.1 is enabled.</p>
+</li>
+<li>
+<p><strong>Qtree Quality of Service (QoS).</strong> Provides a way for storage administrators to apply QoS maximums and minimums to qtrees in ONTAP. This is currently only available with REST APIs and the command line, does not include adaptive QoS support, and is NFS only.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="smbcifs-enhancements">SMB/CIFS Enhancements</h3>
+<div class="paragraph">
+<p>ONTAP 9.8 offers the following SMB/CIFS enhancements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SMB3-encrypted DC connections.</strong> Encryption over the wire for SMB DC connections.</p>
+</li>
+<li>
+<p><strong>Map SID to UID on Set Owner (-map- sid-to- uid-on-set-owner).</strong> This option controls whether ONTAP maps the Windows SID to a UNIX UID when setting ownership on files and folders. The option was added to improve the data migration experience for customers that experienced increased load on their Active Directory Servers. The default is <code>true</code>. (Fix for bug <a href="https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1153207" target="_blank" rel="noopener">1153207</a>.)</p>
+</li>
+<li>
+<p><strong>Set Modebits when NFSv4_acl are inherited (-is-inherit-modebits-with-nfsv4acl-enabled)</strong>. Provides support for multiprotocol NAS interaction when SMB files are created in directories where NFSv4 ACLs have removed the default <code>OWNER@</code>, <code>GROUP@</code>,  and <code>EVERYONE@</code> ACLs, or those ACLs don’t have inherit flags set. Default is <code>false</code>. (Fix for <a href="https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/820848" target="_blank" rel="noopener">bug 820848</a>.)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="flexcache-volume-enhancements">FlexCache Volume Enhancements</h3>
+<div class="paragraph">
+<p>NetApp FlexCache volumes are sparse, virtual caches comprised of NetApp FlexGroup volumes. These caches point back to an origin volume and populate data into the cache as it is requested from clients to provide fast, localized access anywhere you run ONTAP―whether in the cloud, at the edge, or in the datacenter―to provide a truly global namespace.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/ontap98fo_image19.png" alt="Error: Missing Graphic Image"></span></p>
+</div>
+<div class="paragraph">
+<p>For more information about FlexCache volumes, see <a href="https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf" target="_blank" rel="noopener">TR-4743: FlexCache in ONTAP</a>.</p>
+</div>
+<div class="paragraph">
+<p>ONTAP 9.8 offers the following FlexCache volume enhancements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SMB/CIFS support.</strong> NetApp FlexCache now supports cache access to NFSv3 and SMB clients, as well as multiprotocol NAS data access. FlexCache can be used for multi-site distributed localized file locking for workloads that are read-heavy.</p>
+</li>
+<li>
+<p><strong>Increased FlexCache fan-out ratio.</strong> ONTAP 9.8 provides a 100:1 fan-out ratio. Previously, the ratio was 10:1.</p>
+</li>
+<li>
+<p><strong>FlexCache volumes with a SnapMirror secondary origin.</strong> FlexCache volumes can now be attached to SnapMirror secondary volumes, which provides a way to offload read operations from the primary storage systems, as well as offering a more geographically localized origin volume.</p>
+</li>
+<li>
+<p><strong>Block-level cache invalidation.</strong> Rather than invalidating entire files when evicting changed data from the cache, now only the blocks that have changed are evicted. This saves capacity and WAN traffic load.</p>
+</li>
+<li>
+<p><strong>Pre-populating caches.</strong> If you have a directory in a volume that you know will be accessed frequently, you can now pre-populate the cache with the contents of that directory to eliminate the latency from initial client access.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="flexgroup-volume-enhancements">FlexGroup Volume Enhancements</h3>
+<div class="paragraph">
+<p>FlexGroup volumes are the NetApp ONTAP scale-out NAS solution, providing up to 20PB and 400 billion files in a single namespace, while offering automatically load-balanced parallel processing of high ingest workloads for a blend of capacity, performance, and simplicity.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/ontap98fo_image20.png" alt="Error: Missing Graphic Image"></span></p>
+</div>
+<div class="paragraph">
+<p>For more information about FlexGroup volumes, see <a href="https://www.netapp.com/us/media/tr-4571.pdf" target="_blank" rel="noopener">TR-4571: NetApp FlexGroup Volumes Best Practices</a>.</p>
+</div>
+<div class="paragraph">
+<p>ONTAP 9.8 offers the following FlexGroup volume enhancements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>1,023 Snapshot support.</strong> NetApp FlexGroup volumes now can have up to 1,023 Snapshot copies per volume. With additional Snapshot copies, FlexGroup volumes can become more viable as archival destinations, can keep a larger number of frequent snapshots, and can now support FlexVol conversions that have Snapshot copy IDs greater than 255.</p>
+</li>
+<li>
+<p><strong>NDMP enhancements.</strong> NDMP support for FlexGroup volumes was added in ONTAP 9.7 but was missing the following functionality options:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ONTAP 9.8 adds support for NDMP</p>
+</li>
+<li>
+<p>EXCLUDE</p>
+</li>
+<li>
+<p>Restartable Backup Extensions (RBE)</p>
+</li>
+<li>
+<p>MULTI_SUBTREE_NAMES</p>
+</li>
+<li>
+<p>Performance enhancements</p>
+<div class="paragraph">
+<p>For more information on FlexGroup volumes and NDMP, see <a href="https://www.netapp.com/us/media/tr-4678.pdf" target="_blank" rel="noopener">TR-4678: Data Protection and Backup - FlexGroup Volumes</a>.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>FlexGroup convert support for 7MTT volumes.</strong> Prior to ONTAP 9.8, you could not convert a FlexVol that had been transitioned from 7-Mode to a FlexGroup volume. ONTAP 9.8 lifts that restriction.</p>
+</li>
+<li>
+<p><strong>Proactive resizing.</strong> Proactive resizing is a capacity management feature that maintains a free space buffer in FlexGroup member volumes to encourage consistent performance and capacity distribution.</p>
+</li>
+<li>
+<p><strong>File cloning.</strong> You can now clone files in a FlexGroup volume using VMware vSphere through VAAI copy offload support. File cloning with REST APIs or the CLI is not currently supported, however.</p>
+</li>
+<li>
+<p><strong>VMware datastore support.</strong> ONTAP 9.8 now has official support for FlexGroup volumes as scalable VMware datastores. This means the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Validated performance and placement</p>
+</li>
+<li>
+<p>Interop qualification</p>
+</li>
+<li>
+<p>Virtual Storage Console support</p>
+</li>
+<li>
+<p>NetApp SnapCenter backup support</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="async-delete">Async Delete</h3>
+<div class="paragraph">
+<p>Async delete enables storage administrators to bypass the latency of the network by deleting directories from the CLI.</p>
+</div>
+<div class="paragraph">
+<p>If you have ever tried to delete a directory with many files in it over NFS or SMB, you know how painful that can be. Each operation must travel over the network via the NAS protocol that you are using, and then ONTAP must process those requests and respond. Depending on the network bandwidth available, client specs, or storage system, that process can take a long time. Async delete saves significant time and allows clients to get back to work quicker.</p>
+</div>
+<div class="paragraph">
+<p>For more information on async delete, see <a href="https://www.netapp.com/us/media/tr-4571.pdf" target="_blank" rel="noopener">TR-4751: NetApp FlexGroup Volumes Best Practices</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="san-enhancements">SAN Enhancements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Storage Area Network (SAN) protocols refer to block-based data transfer methods such as FCP, iSCSI, and NVMe over Fibre Channel. The following enhancements were added to ONTAP 9.8 for SAN protocol support.</p>
+</div>
+<div class="sect2">
+<h3 id="all-san-array-asa">All-SAN Array (ASA)</h3>
+<div class="paragraph">
+<p>ONTAP 9.7 introduced a new dedicated SAN platform called <a href="https://www.netapp.com/data-storage/san-storage-area-network/documentation/" target="_blank" rel="noopener">ASA</a>, with the goal of simplifying Tier-1 SAN deployments while drastically reducing the failover times in SAN environments by offering an active/active approach to SAN connectivity.</p>
+</div>
+<div class="paragraph">
+<p>You can find out more about the ASA at <a href="https://www.netapp.com/data-storage/san-storage-area-network/documentation/" target="_blank" rel="noopener">All-SAN Array documentation resources</a>.</p>
+</div>
+<div class="paragraph">
+<p>ONTAP 9.8 brings some enhancements to the ASA, including the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Larger LUN and FlexVol volume sizes.</strong> LUNs on the ASA can now be provisioned at 128TB; FlexVol volumes can be 300TB.</p>
+</li>
+<li>
+<p><strong>MetroCluster over IP support.</strong> ASA can now be used for site failovers over IP networks.</p>
+</li>
+<li>
+<p><strong>SnapMirror Business Continuity (SM-BC) support.</strong> ASA can be used with SnapMirror Business Continuity.  xref</p>
+</li>
+<li>
+<p><strong>Host ecosystem expansion.</strong> HP-UX, Solaris, and AIX support. See the <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">Interoperability Matrix</a> for details.</p>
+</li>
+<li>
+<p><strong>Support for the A800 and A250 platforms.</strong></p>
+</li>
+<li>
+<p><strong>Simplified Provisioning in System Manager.</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persistent-ports">Persistent Ports</h3>
+<div class="paragraph">
+<p>ASA adds an enhancement called Persistent Ports to improve failover times. Persistent ports in ONTAP offer much more resiliency and continuous data access for SAN hosts connecting to an ASA. Each node on the ASA maintains shadow fiber channel LIFs. This functionality is key to how ONTAP 9.8 reduces SAN failover time even more for the ASA. These LIFs maintain the same IDs of the partner LIFs, but they remain in standby mode. If there is a failover and an FC LIF must migrate to the partner node, then, rather than changing the IDs (which can increase failover times while the host negotiates that change), the shadow LIF becomes the new path. The host continues I/O on the same path, on the same ID, without a link-down notification and without any additional configuration required.</p>
+</div>
+<div class="paragraph">
+<p>The following figure provides a failover example for persistent ports.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/ontap98fo_image21.png" alt="Error: Missing Graphic Image"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nvmefc">NVMe/FC</h3>
+<div class="paragraph">
+<p>NVMe is a new SAN protocol that helps improve latency and performance with block workloads over traditional FCP and iSCSI.</p>
+</div>
+<div class="paragraph">
+<p>This blog covers it nicely: <a href="https://blog.netapp.com/nvme-over-fabric/" target="_blank" rel="noopener">When You’re Implementing NVMe Over Fabrics, the Fabric Really Matters</a>.</p>
+</div>
+<div class="paragraph">
+<p>NetApp introduced support for NVMe over Fibre Channel in ONTAP 9.4 and has been adding feature enhancements in each release. ONTAP 9.8 adds the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NVMe/FC on the same SVM with FCP and iSCSI.</strong> Now, you can use NVMe/FC on the same SVMs as your other SAN protocols, which simplifies management of your SAN environments.</p>
+</li>
+<li>
+<p><strong>Gen 7 SAN switch fabric support.</strong> This feature adds support for the newer Gen-7 SAN switches.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="s3-enhancements">S3 Enhancements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Object storage with the S3 protocol is the newest addition to the ONTAP protocol family. Added as a public preview in ONTAP 9.7, S3 is now a fully supported protocol in ONTAP 9.8.</p>
+</div>
+<div class="paragraph">
+<p>Support for S3 includes the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Basic PUT/GET object access (does not include access to both S3 and NAS from the same bucket)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No object tagging or ILM support; for feature-rich, globally dispersed S3, use <a href="https://www.netapp.com/data-storage/storagegrid/" target="_blank" rel="noopener">NetApp StorageGRID</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>TLS 1.2 encryption</p>
+</li>
+<li>
+<p>Multi-part uploads</p>
+</li>
+<li>
+<p>Adjustable ports</p>
+</li>
+<li>
+<p>Multiple buckets per volume</p>
+</li>
+<li>
+<p>Bucket access policies</p>
+</li>
+<li>
+<p>S3 as a NetApp FabricPool targetFor more information, see the following resources:</p>
+</li>
+<li>
+<p><a href="https://soundcloud.com/techontap_podcast/episode-268-netapp-fabricpool-and-s3-in-ontap-98" target="_blank" rel="noopener">Tech ONTAP Podcast: Episode 268 - NetApp FabricPool and S3 in ONTAP 9.8</a></p>
+</li>
+<li>
+<p><a href="https://www.netapp.com/us/media/tr-4814.pdf" target="_blank" rel="noopener">ONTAP S3</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="ontap98fo_storage_efficiencies.html">Next: Storage Efficiencies</a></p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div class="page-nav-contribute"  >
+      <div class="page-nav-contribute-title">CONTRIBUTE</div>
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-whatsnew/blob/main/ontap98fo_data_protocols.adoc" class="btn btn-default githubEditButton" role="button"><img src="/us-en/ontap-whatsnew/images/github.png" class="github-icon" />Edit on GitHub</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/ontap-whatsnew/issues/new?body=Page%3A%20[Data Protocols](https://docs.netapp.com/us-en/ontap-whatsnew/ontap98fo_data_protocols.html)" class="btn btn-default githubEditButton" role="button"><img src="/us-en/ontap-whatsnew/images/github.png" class="github-icon" />Request doc changes</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Contributor's Guide</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2021 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/ontap-whatsnew/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Have feedback for our website?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">Let us know</a>
+  <a href="https://docs.netapp.com/us-en/announcements/" class="n-footer__copyright">Announcements</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/ontap-whatsnew/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/ontap-whatsnew/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/ontap-whatsnew/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/ontap-whatsnew/js/www-ntap.js'></script>
+    <script src='/us-en/ontap-whatsnew/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>
