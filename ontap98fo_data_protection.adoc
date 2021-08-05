@@ -45,7 +45,7 @@ ONTAP 9.8 now adds support for IPSec. The ONTAP implementation of IPSec leverage
 
 === Trusted Platform Module
 
-With the new Trusted Platform Module (TPM) in ONTAP 9.8, the encryption keys for the onboard key manager (OKM) are no longer stored in the boot device but instead are stored in the physical TPM for systems so equipped, offering greater security and protection. Moving to the TPM is a nondisruptive process.
+With the new Trusted Platform Module (TPM) in ONTAP 9.8, the encryption keys for the onboard key manager (OKM) are sealed by the physical TPM, offering greater security and protection. Moving to the TPM is a nondisruptive process.
 
 === NetApp Volume Encryption
 
